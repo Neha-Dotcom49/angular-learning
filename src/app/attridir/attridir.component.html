@@ -1,0 +1,15 @@
+<!-- <p>attridir works!</p> -->
+<h2>NgStle</h2>
+<p [ngStyle]="myStyle">I have applied ngStyle</p>
+
+<h2>NgClass</h2>
+<p class="test">This is simple class example</p>
+<p [ngClass]="{'text-warning': isActive}" >This is ngClass example</p>
+
+<ul *ngFor="let people of peoples">
+    <li [ngClass]="{
+        'text-success':people.country == 'UK',
+        'text-warning':people.country == 'USA', 
+        'text-danger':people.country == 'HK'
+    }" >{{people.name}} ({{people.country}})</li>
+</ul>

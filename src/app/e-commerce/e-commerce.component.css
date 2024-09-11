@@ -1,0 +1,32 @@
+.custom-card-layout {
+  margin-bottom: 20px !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .custom-card-layout .card {
+    margin-bottom: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .custom-card-layout .card img {
+    max-height: 150px;
+    object-fit: cover;
+  }
+  
+  .custom-card-layout .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .custom-card-layout .card .btn {
+    align-self: center;
+    width: 100%;
+  }
+  
+  

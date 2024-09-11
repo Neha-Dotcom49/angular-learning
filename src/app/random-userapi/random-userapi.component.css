@@ -1,0 +1,14 @@
+.table-responsive {
+    height: 600px;
+    overflow-y: auto;
+  }
+  th,td{
+    border-right: 1px solid #ddd;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    background-color: #343a40; /* Dark color for headers */
+    color: white;
+  }

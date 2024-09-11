@@ -1,0 +1,16 @@
+<p>onewaydatabind works!</p>
+<p>Good Morning {{firstName}} !!!</p>
+{{2+4}}
+<p>hii {{lastName}}</p>
+<img src="{{imageUrl}}" alt="Nature">
+
+<img [src]="imageUrl" alt="Example Image">
+<button (click)="changeImage()">Change Image</button>
+
+<div [innerText]="title"></div>
+<input type="text" [disabled]="isDisabled">
+<button [disabled]="isDisabled" (click)="changeName()">Click me </button>
+
+<input [(ngModel)]="userName" placeholder="Enter your name">
+<p>Hello, {{ userName }}!</p>
+

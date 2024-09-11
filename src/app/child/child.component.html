@@ -1,0 +1,8 @@
+<p>child works!</p>
+{{ inputData}}
+<div>
+    <input type="text"  placeholder="send value from child" #input  width="200">
+</div>
+<div>
+    <button class="btn btn-success mt-2" (click)="emitData(input.value)">Send Data To Parent</button>
+</div>

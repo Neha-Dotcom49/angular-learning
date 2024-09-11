@@ -1,0 +1,79 @@
+<!-- <p>reactiveform works!</p> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-left rounded py-5">
+            <form [formGroup]="myReactiveForm"  (ngSubmit)="onSubmit()" >
+                <div class="row">
+                    <h2 style="text-align: center;">
+                        Reactive Form
+                    </h2>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <input type="text" class="form-control" 
+                        placeholder="Enter your first name" formControlName="firstName" >
+                    </div>
+                    <div>
+                        <small class="text-danger" *ngIf="!myReactiveForm.get('firstName')?.valid
+                                        && myReactiveForm.get('firstName')?.touched">
+                            <small *ngIf="myReactiveForm.get('firstName')?.errors?.['required']">
+                                First name is required
+                            </small>
+                            <small *ngIf="myReactiveForm.get('firstName')?.errors?.['minlength']">
+                                The field must have at least 3 characters
+                            </small>
+                            <small *ngIf="myReactiveForm.get('firstName')?.errors?.['firstNameNotAllowed']">
+                                Try another name for your child .
+                            </small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col">
+                        <input type="text" class="form-control" 
+                        placeholder="Enter your last name" formControlName="lastName" >
+                    </div>
+                    <div>
+                        <small class="text-danger" *ngIf="!myReactiveForm.get('firstName')?.valid
+                                        && myReactiveForm.get('lastName')?.touched">
+                            <small *ngIf="myReactiveForm.get('lastName')?.errors?.['required']">
+                                Last name is required
+                            </small>
+                            <small *ngIf="myReactiveForm.get('lastName')?.errors?.['minlength']">
+                                The field must have at least 3 characters
+                            </small>
+                        </small>
+                    </div>
+                </div>
+                <div class="row mt-2" formArrayName="skills">
+                    <ng-container class="col" *ngFor="let skill of skills.controls; index as i">
+                        <div class="input-group mt-2">
+                        <input type="text" class="form-control mt-2"  placeholder="Enter your skills" formControlName="{{i}}" > 
+                        <button *ngIf="skills.length > 1" 
+                            class="btn btn-danger rounded-circle mt-2" 
+                            (click)="removeSkill(i)">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                        </div>
+                    </ng-container>
+                    <button type="button" class="btn btn-sm btn-light mt-4" (click)="OnAddSkills()">Add Skills</button>
+                </div>
+    <!-- Country Selection -->
+    <div class="row mt-2">
+        <div class="col">
+          <select class="form-select" formControlName="country">
+            <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+          </select>
+        </div>
+      </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-6">
+                        <button [disabled]="!myReactiveForm.valid" class="btn btn-success" type="submit" > Submit </button>
+                    </div>            
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<!-- <p>product-component works!</p> -->
+<div class="shopping-cart">
+    <h2>Shopping Cart</h2>
+    
+  <ul *ngIf="cartItems.length > 0">
+  <li *ngFor="let item of items">
+    {{ item.name }} - {{ item.price}}₹ per kg
+  </li>
+  </ul>
+  <input type="text" placeholder="Enter Item name" #itemNameInput>
+  <button (click)="addItem(itemNameInput.value); itemNameInput.value=''">Add Item</button>
+
+</div>

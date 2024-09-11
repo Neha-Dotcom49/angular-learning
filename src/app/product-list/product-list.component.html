@@ -1,0 +1,34 @@
+<!-- <p>product-list works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-3 mb-3" *ngFor="let product of products">
+        <div class="card">
+          <img [src]="product.image" class="card-img-top" [alt]="product.title">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.title }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <p class="card-text"><strong>${{ product.price}}</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="container d-flex flex-wrap">
+    <div class="card mt-4" *ngFor="let product of products" style=" margin: 2px;">
+      <img [src]="product.image" class="card-img-top" alt="{{product.title}}">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <div class="d-flex flex-row justify-content-between">
+            <div class="btn-group" role="group" aria-label="Product Actions">
+                <button type="button" class="btn btn-outline-secondary" (click)="viewProduct(product)">View</button>
+                <button type="button" class="btn btn-outline-secondary" (click)="buyProduct(product)">Buy</button>
+              </div>
+        <p class="card-text"><strong>{{ product.price | currency}}</strong></p>
+        
+        </div>
+        <p class="card-text">Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
+      </div>
+    </div>
+  </div>

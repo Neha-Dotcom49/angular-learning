@@ -1,0 +1,68 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "a title",
+      "views": 100
+    },
+    {
+      "id": "2",
+      "title": "another title",
+      "views": 200
+    },
+    {
+      "id": "3",
+      "title": "another angular",
+      "views": 200
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": "1"
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": "1"
+    }
+  ],
+  "todo": [
+    {
+      "id": 1724644129367,
+      "title": "Practice CRUD concept",
+      "completed": true
+    },
+    {
+      "id": 1724727343590,
+      "title": "Practice CRUD concept",
+      "completed": true
+    },
+    {
+      "id": 1724727344976,
+      "title": "Practice CRUD concept",
+      "completed": false
+    },
+    {
+      "id": 1724727345736,
+      "title": "Practice CRUD concept",
+      "completed": false
+    },
+    {
+      "id": 1724727346492,
+      "title": "Practice CRUD concept",
+      "completed": true
+    },
+    {
+      "id": 1724727347154,
+      "title": "Practice CRUD concept",
+      "completed": true
+    },
+    {
+      "title": "completed @input @output decorators",
+      "completed": false,
+      "id": 1724727347155
+    }
+  ]
+}

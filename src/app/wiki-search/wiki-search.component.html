@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Wikipedia Search</h1>
+  
+    <!-- Search Input -->
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+         (keyup)="search()"
+      placeholder="Search Wikipedia"
+      class="form-control mb-3"
+    />
+
+  
+    <!-- Display the results in a table format -->
+    <div *ngIf="results?.length">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th style="padding-right: 100px;">Wordcount</th>
+            <th>Snippet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <td>{{ result.title }}</td>
+            <td style="padding-right: 100px;">{{ result.wordcount }}</td>
+            <td [innerHTML]="result.snippet"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  

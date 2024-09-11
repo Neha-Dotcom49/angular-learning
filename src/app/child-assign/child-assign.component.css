@@ -1,0 +1,10 @@
+ div {
+align-items: center;
+border: 2px solid;
+width: 300px;
+margin: 200px auto;
+
+}
+li{
+    list-style-type: none;
+}

@@ -1,0 +1,44 @@
+.container { 
+    display: flex; 
+     flex-wrap: wrap; 
+     gap: 16px; 
+    justify-content: center; 
+  } 
+  
+  .card { 
+     display: flex; 
+     flex-direction: column; 
+     border: 1px solid #ddd; 
+     border-radius: 4px; 
+    overflow: hidden; 
+    width: 300px;
+  } 
+  
+   .card-img-top {
+    width: 100px;
+    height: 100px; 
+
+  } 
+  
+   .card-body {
+    padding: 16px;
+    flex: 1; 
+  }
+  
+  .btn {
+    flex: 1;
+  } 
+
+/* .product-list{
+    width: 300px;
+    background-color: rgb(175, 142, 159);
+    margin: auto;
+    margin-top: 10px;
+    padding: 20px;
+    border: 1px solid #340ef0;
+}
+
+button {
+    margin-top: 5px;
+    margin-left: 10px;
+} */

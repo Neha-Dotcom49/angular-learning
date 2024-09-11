@@ -1,0 +1,110 @@
+<mat-card class="login-page">
+  <mat-card-title>Simple (TemplateDriven)</mat-card-title>
+  <mat-card-content>
+    <form #simpleform="ngForm" class="login-form" (ngSubmit)="onSubmit(simpleform)">
+      <!-- passing parametr as whole form as template reference variable -->
+      <mat-form-field>
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          name="email"
+          ngModel
+          email
+          #email="ngModel"
+          [required]="true"
+          [minlength]="3"
+          [maxlength]="30"
+        >
+
+        <mat-error *ngIf="email.errors?.['required'] && email.touched">The email is mandatory.</mat-error>
+        <mat-error *ngIf="email.errors?.['minlength']">
+          Your email must have a minimum of
+          {{email.errors?.['minlength']?.requiredLength}} chars, but it only has
+          {{email.errors?.['minlength']?.actualLength}}.
+        </mat-error>
+        <mat-error *ngIf="email.errors?.['email']">This is not a valid email</mat-error>
+      </mat-form-field>
+
+      <!-- Password Field -->
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          name="password"
+          ngModel
+          #password="ngModel"
+          [required]="true"
+          (ngModelChange)="checkPasswordMatch(simpleform)"
+          [minlength]="6"
+        >
+
+        <mat-error *ngIf="password.errors?.['required'] && password.touched">The password is mandatory.</mat-error>
+        <mat-error *ngIf="password.errors?.['minlength']">
+          Your password must have a minimum of
+          {{ password.errors?.['minlength']?.requiredLength }} chars, but it
+          only has {{ password.errors?.['minlength']?.actualLength }}.
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Confirm Password Field -->
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Confirm Password"
+          name="confirmPassword"
+          ngModel
+          #confirmPassword="ngModel"
+          [required]="true"
+          (ngModelChange)="checkPasswordMatch(simpleform)"
+        >
+        <mat-error *ngIf="confirmPassword.errors?.['required']">The confirmation password is mandatory.</mat-error>
+        <mat-error *ngIf="confirmPassword.errors?.['mismatch']">Passwords must match.</mat-error>
+      </mat-form-field>
+
+      <mat-radio-group aria-label="Select Gender"
+         name="gender"
+         [(ngModel)]="selectedGender"
+      >
+        <mat-radio-button *ngFor="let gender of genders" [value]="gender.value">{{ gender.viewValue }}</mat-radio-button>
+      </mat-radio-group>
+
+      <!-- Address Field -->
+      <div ngModelGroup="address">
+        <mat-form-field>
+          <mat-label for="country">County</mat-label>
+          <mat-select
+            [(ngModel)]="selectedCountryId"
+            name="country"
+            id="country"
+            (selectionChange)="onCountryChange($event)"
+          >
+            <mat-option *ngFor="let country of countries" [value]="country.countryId">{{ country.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- State field -->
+        <mat-form-field>
+          <mat-label for="state">Sates</mat-label>
+          <mat-select ngModel name="state" id="state">
+            <mat-option *ngFor="let state of filteredStates" [value]="state.id">{{ state.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="date" [(ngModel)]="birthDate" placeholder="Date" name="date" ngModel>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput type="number" [(ngModel)]="age" placeholder="Age" name="age" ngModel>
+      </mat-form-field><br>
+
+      <button type="button" class="btn btn-success" (click)="calculateAge()">Calculate Age</button><br>
+
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+      <button mat-raised-button color="primary" type="button"  (click)="resetForm(simpleform)">Reset</button>
+      
+    </div>
+    </form>
+  </mat-card-content>
+</mat-card>

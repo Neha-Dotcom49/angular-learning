@@ -1,0 +1,29 @@
+<!-- <p>random-userapi works!</p> -->
+ <div class="container mt-3">
+<div class="table-responsive ">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Picture</th>
+          <th scope="col">Name</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Location</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users let i = index">
+            <td>{{ i + 1 }}</td>
+            <td><img [src]="user.picture.large" alt="User Picture" width="50"></td>
+          <td>{{ user.name.first }} {{ user.name.last }}</td>
+          <td>{{ user.gender }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.location.city }}, {{ user.location.country }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>

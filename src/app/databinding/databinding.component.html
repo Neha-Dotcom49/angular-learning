@@ -1,0 +1,39 @@
+<p>databinding works!</p>
+<div class="container-fluid">
+    <div class="row">
+         <div class="col-3">
+             <h2>Register Product</h2>
+             <dl>
+                 <dt>Name</dt>
+                 <dd><input type="text" [(ngModel)]="Product.Name" class="form-control"></dd>
+                 <dt>Price</dt>
+                 <dd><input type="text" [(ngModel)]="Product.Price" class="form-control"></dd>
+                 <dt>Stock</dt>
+                 <dd class="form-switch"> <input [(ngModel)]="Product.Stock" type="checkbox" class="form-check-input"> Available</dd>
+                 <dt>Shipped To</dt>
+                 <dd>
+                     <select [(ngModel)]="Product.ShippedTo" class="form-select">
+                         <option>Delhi</option>
+                         <option>Hyd</option>
+                     </select>
+                 </dd>
+             </dl>
+             <button (click)="RegisterClick()" class="btn btn-primary w-100">Register</button>
+         </div>
+         <div class="col-9">
+            <h2>Details</h2>
+            <dl>
+             <dt>Name</dt>
+             <dd [innerText]="UpdatedProduct.Name"></dd>
+             <dt>Price</dt>
+             <dd>{{UpdatedProduct.Price}}</dd>
+             <dt>Stock</dt>
+             <dd>{{(UpdatedProduct.Stock==true)?"Available":"Out of Stock"}}</dd>
+             <dt>Shipped To</dt>
+             <dd>{{UpdatedProduct.ShippedTo}}</dd>
+            </dl>
+         </div>
+    </div>
+ </div>
+ 
+ 

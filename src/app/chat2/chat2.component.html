@@ -1,0 +1,9 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let message of messages">
+            {{message.user}} : {{message.message}}({{message.timestamp | date}})
+        </li>
+    </ul>
+</div>
+<input type="text" class="form-control" [(ngModel)]="newMessage" placeholder="Enter your message">
+<button class="btn btn-success mt-2" (click)="sendMessage()" >Send</button>

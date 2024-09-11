@@ -1,0 +1,177 @@
+<!-- <p>tdf-assign works!</p> -->
+<mat-card class="registration-page">
+    <mat-card-title>Registration Form</mat-card-title>
+    <mat-card-content>
+
+        <form #simpleform="ngForm" class="registration-form"   (ngSubmit)="onSubmit(simpleform)">
+            <mat-form-field>
+              <mat-label>First Name</mat-label>
+              <input matInput
+               type="text"
+               name="firstName"
+               ngModel
+               #firstName="ngModel"
+               [minlength]="5"
+               [maxlength]="5"
+               [required]="true"
+               
+               
+               >
+        <mat-error *ngIf="firstName.errors?.['required'] && firstName.touched">The First Name is mandatory.</mat-error>
+        <mat-error *ngIf="firstName.errors?.['minlength']">
+            First Name  must have a minimum of {{ firstName.errors?.['minlength']?.requiredLength }}
+            chars, but it only has {{ firstName.errors?.['minlength']?.actualLength }}.
+        </mat-error>
+        <mat-error *ngIf="firstName.errors?.['maxlength']">
+            First Name must have a maximum of {{ firstName.errors?.['maxlength']?.requiredLength }}
+            chars, but it  has {{ firstName.errors?.['maxlength']?.actualLength }}.
+        </mat-error>
+
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput type="text"
+                name="lastName"
+                ngModel
+                #lastName = "ngModel"
+                [maxlength]="10"
+                [required]="true"
+                >
+                <mat-error *ngIf="lastName.errors?.['required'] && lastName.touched">The Last Name is mandatory.</mat-error>
+                <mat-error *ngIf="lastName.errors?.['maxlength']">
+                    Last Name must have a minimum of {{ lastName.errors?.['maxlength']?.requiredLength }}
+                    chars, but it only has {{ lastName.errors?.['maxlength']?.actualLength }}.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Age</mat-label>
+                <input matInput 
+                type="number"
+                name="age"
+                ngModel
+                #age="ngModel"
+                min="17"
+                max="20"
+                [required]="true"
+                >
+                <mat-error *ngIf="age.errors?.['required'] && age.touched">Age is required.</mat-error>
+                <mat-error *ngIf="age.errors?.['min']"> Age must be between 17 and 20 but you are only {{ age.value }} year old.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput 
+                type="email"
+                name="email"
+                [required]="true"
+                ngModel
+                email
+                #email = "ngModel"
+                >
+                <mat-error *ngIf="email.errors?.['required'] && email.touched">Email is required.</mat-error>
+                <mat-error *ngIf="email.errors?.['email'] && email.touched">Please Provide Valid Email Address</mat-error>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput 
+                 type="text"
+                 name="phone"
+                 ngModel 
+                 #phone="ngModel"
+          
+                 pattern="^[0-9]{10}$"
+                 maxlength="10"
+                >
+                <mat-error *ngIf="phone.errors?.['pattern'] && phone.touched">Phone number must be exactly 10 digits long.</mat-error>
+              
+                
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Select an option</mat-label>
+                <mat-select
+                ngModel
+                name="city"
+                #city ="ngModel"
+                [required]="true"
+                >
+                  <mat-option>None</mat-option>
+                  <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+               
+                </mat-select>
+                <mat-error *ngIf="city.errors?.['required'] && city.touched">Please select city</mat-error>
+              </mat-form-field>
+
+
+            
+              
+                
+                <mat-radio-group aria-label="Select Gender"
+                                 name="gender"
+                                 ngModel
+                                 #gender="ngModel"
+                                 [required]="true">
+                                 Gender:
+                  <mat-radio-button *ngFor="let g of genders" [value]="g.value">{{ g.viewValue }}</mat-radio-button>
+                  <mat-error style="font-size: smaller;" *ngIf="gender.errors?.['required'] && gender.touched">Please select a gender.</mat-error>
+                </mat-radio-group>
+               
+              
+            
+              
+            
+
+              <mat-form-field>
+                <input 
+                    matInput 
+                    type="password" 
+                    placeholder="Password" 
+                    name="password" 
+                    ngModel 
+                    #password="ngModel"
+                    [required]="true"
+                    [minlength]="6"
+                    pattern="(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}\[\]:;,.<>?])[A-Za-z\d!@#$%^&*()_+{}\[\]:;,.<>?]{6,}"
+                    (ngModelChange)="checkPasswordMatch(simpleform)"
+                    >
+                
+                <mat-error *ngIf="password.errors?.['required'] && password.touched">The password is mandatory.</mat-error>
+                <mat-error *ngIf="password.errors?.['minlength']">
+                    Your password must have a minimum of {{ password.errors?.['minlength']?.requiredLength }}
+                    chars, but it only has {{ password.errors?.['minlength']?.actualLength }}.
+                </mat-error>
+                <mat-error *ngIf="password.errors?.['pattern']">
+                  Password must contain at least one uppercase letter and one special character.
+              
+                </mat-error>
+                
+            </mat-form-field>
+        
+            <!-- Confirm Password Field -->
+            <mat-form-field>
+                <input 
+                  matInput 
+                  type="password" 
+                  placeholder="Confirm Password" 
+                  name="confirmPassword" 
+                  ngModel 
+                  #confirmPassword="ngModel"
+                  [required]="true"
+                  (ngModelChange)="checkPasswordMatch(simpleform)"
+                  >
+                <mat-error *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched">
+                  The confirmation password is mandatory.
+                </mat-error>
+                <mat-error *ngIf="confirmPassword.errors?.['mismatch']">
+                  Passwords must match.
+                </mat-error>
+              </mat-form-field>
+              
+              <button mat-raised-button color="primary" type="submit"  >Submit</button>
+        </form>
+    </mat-card-content>
+  </mat-card>

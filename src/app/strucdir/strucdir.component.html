@@ -1,0 +1,38 @@
+<!-- <p>strucdir works!</p> -->
+<div class="shopping-cart">
+    <h2>Shopping Cart</h2>
+      <!-- when the cart is empty  -->
+     <div *ngIf="cartItems.length === 0">
+        <p>Your cart is empty. Add items in your cart</p>
+     </div>
+     <!-- show the list of item in the cart -->
+     <ul *ngIf="cartItems.length > 0">
+      <li *ngFor="let item of cartItems; let i = index"> 
+         {{item}}
+         <button (click)="removeItem(i)">Remove</button>
+     </li>
+     </ul>
+     <!-- Add items to the cart -->
+     <input type="text" placeholder="Enter Item name" #itemInput > 
+     <button  class= "btn btn-primary mt-1" (click)="addItem(itemInput.value); itemInput.value=''">Add Item</button>   
+    </div>
+   
+   <div class="shopping-cart">     <!-- Option selection for color -->
+  <label for="color-select">Pick a color:</label>
+  <select id="color-select" [(ngModel)]="color">
+    <option value="">--Select a color--</option>
+    <option value="red">Red</option>
+    <option value="yellow">Yellow</option>
+    <option value="pink">Pink</option>
+  </select>
+</div> 
+
+    <div class="shopping-cart">
+      <h2>NgSwitch Example</h2>
+      <div [ngSwitch]="color"> 
+         <p *ngSwitchCase="'red'">You picked red!</p>
+         <p *ngSwitchCase="'yellow'">You picked yellow!</p>
+         <p *ngSwitchCase="'pink'">You picked pink!</p>
+         <p *ngSwitchDefault>You picked something else!</p>
+      </div>
+   </div>
